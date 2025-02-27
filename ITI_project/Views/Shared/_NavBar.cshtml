@@ -1,0 +1,32 @@
+﻿<a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+<nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand"><a href="#page-top">Welcome  @User.Identity.Name</a></li>
+        <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li class="sidebar-nav-item"><a asp-action="ShowAll" asp-controller="Instructor">Instructor</a></li>
+            <li class="sidebar-nav-item"><a asp-action="Index" asp-controller="Course">Course</a></li>
+            <li class="sidebar-nav-item"><a asp-action="ChooseResType" asp-controller="CourseRes">Degrees</a></li>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="sidebar-nav-item"><a asp-action="AddRole" asp-controller="Role">Add Role</a></li>
+            }
+
+            <li class="sidebar-nav-item"><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+        }
+        else
+        {
+            <li class="sidebar-nav-item"><a asp-action="Register" asp-controller="Account">Register</a></li>
+            <li class="sidebar-nav-item"><a asp-action="Login" asp-controller="Account">Login</a></li>
+        }
+
+
+        <li class="sidebar-nav-item"><a href="#about">About</a></li>
+        <li class="sidebar-nav-item"><a href="#services">Services</a></li>
+        <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
+        <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+    </ul>
+</nav>

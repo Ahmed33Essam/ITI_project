@@ -1,0 +1,52 @@
+﻿@model List<Instructor>
+@{
+    ViewData["Title"] = "ShowAll";
+}
+
+<h1 style="align-content:center">Instructors</h1>
+
+<body style="align-content:center; background-color:powderblue">
+
+    <form method="post" action="/instructor/Details">
+        <span>
+        <input type="submit" value="Search" class="btn btn-success" style="margin:10px; display:inline" />
+        </span>
+        <span>
+        <input type="number" name="Id" id="Id" value="@ViewData["CurrentFilter"]" style="display:inline"/>
+        </span>
+    </form>
+
+    <a href="/Instructor/new" class="btn btn-success" style="margin:10px">Add New</a>
+
+    <table class="table table-hover table-bordered" style="border: 1px solid black; border-collapse: collapse;">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Address</th>
+            <th>image</th>
+            <th>image</th>
+        </tr>
+            @foreach(var item in Model)
+            {
+                <tr>
+                <td style="align-content:center">@item.Id</td>
+                <td style="align-content:center">@item.Name</td>
+                <td style="align-content:center">@item.Salary</td>
+                <td style="align-content:center">@item.Address</td>
+                <td><img src="@item.Img" alt="Uploaded Image" style="width:100px" /></td>
+                <td>
+                    <a href="https://localhost:44324/Instructor/Details?id=@item.Id" class="link-primary; font-monospace">Details</a>
+                    <br />
+                    
+                    <a href="https://localhost:44324/Instructor/Edit?id=@item.Id" class="link-primary; font-monospace" style="margin:15px">Edit</a>
+                    <br />
+                    
+                    <a href="https://localhost:44324/Instructor/Delete?id=@item.Id" class="link-primary; font-monospace">Delete</a>
+                </td>
+            </tr>
+            }
+
+    </table>
+
+</body>

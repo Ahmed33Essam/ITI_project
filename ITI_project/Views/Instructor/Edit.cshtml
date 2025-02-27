@@ -1,0 +1,51 @@
+﻿@model InstructorWithLists
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form method="post" action="/instructor/SaveEdit/@Model.Id">
+    <div>
+        <label>Name</label>
+        <input type="text" name="Name" id="Name" value="@Model.Name" class="form form-control" />
+
+        <label>Salary</label>
+        <input type="number" name="Salary" id="Salary" value="@Model.Salary" class="form form-control" />
+
+        <label>Image</label>
+        <input type="text" name="Img" id="Img" value="@Model.Img" class="form form-control" />
+
+        <label>Address</label>
+        <input type="text" name="Address" id="Address" value="@Model.Address" class="form form-control" />
+
+        <label>Department Name</label>
+        <select name="DeptID" id="DeptID" class="form form-control">
+            @foreach (var item in Model.lists.Departments)
+            {
+                @if(item.Id == Model.DeptID)
+                {
+                    <option value="@item.Id" selected>@item.Name</option>
+                }
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+
+        <label>Course Name</label>
+        <select name="CourseID" id="CourseID" class="form form-control">
+            @foreach (var item in Model.lists.Courses)
+            {
+                @if (item.Id == Model.CourseID)
+                {
+                    <option value="@item.Id" selected>@item.Name</option>
+                }
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+
+    </div>
+    <input type="submit" value="Add" class="btn btn-success" style="margin:10px"/>
+    <br />
+    <a asp-action="showall" asp-controller="Instructor" class="link-primary; font-monospace">Back to list</a>
+    <hr />
+</form>

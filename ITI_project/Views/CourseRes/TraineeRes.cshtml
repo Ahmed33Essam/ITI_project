@@ -1,0 +1,16 @@
+﻿@model Trainee
+@{
+    ViewData["Title"] = "TraineeRes";
+}
+
+<h1>Trainee Degree</h1>
+
+<form asp-action="TraineeShow" asp-controller="CourseRes">
+    <div>
+    <label asp-for="Id"></label>
+    <input asp-for="Id" class="form-control" />
+    <span class="text-danger">@ViewBag?.msg</span>
+    </div>
+    <input type="submit" class="btn btn-success" value="Search" style="margin:10px"/>
+</form>
+<a asp-action="ChooseResType" asp-controller="CourseRes" class="btn btn-primary" style="margin:10px">Change search</a>

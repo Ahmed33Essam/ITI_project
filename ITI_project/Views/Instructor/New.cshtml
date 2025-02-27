@@ -1,0 +1,60 @@
+﻿@model ListOfCoursesAndDepartments
+@{
+    ViewData["Title"] = "New";
+}
+
+<h1>New</h1>
+
+<form method="post" action="/Instructor/Add" enctype="multipart/form-data">
+    <div>
+        <label>Name</label>
+        <input type ="text" name="Name" id="Name" class="form form-control" />
+
+        <label>Salary</label>
+        <input type="number" name="Salary" id="Salary" class="form form-control" />
+
+        @*--------------------------------------------*@
+        <label>Image</label>
+        <input type="file" name="Image" id="Image" class="form-control" />
+
+        <label>Address</label>
+        <input type="text" name="Address" id="Address" class="form form-control" />
+
+        <label>Department Name</label>
+        <select name="DeptID" id="DeptID" class="form form-control" onchange="GetCourses()">
+            @foreach (var item in ViewBag.listes.Departments)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+            <option value="0" selected >Select Department</option>
+        </select>
+
+        <label>Course Name</label>
+        <select name="CourseID" id="CourseID" class="form form-control"></select>
+
+    </div>
+    <input type="submit" value="Add" class="btn btn-success" style="margin:10px"/>
+</form>
+<a asp-action="showall" asp-controller="Instructor" class="link-primary; font-monospace">Back to list</a>
+<hr />
+
+
+
+@*to make the drop lists make sence*@
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    function GetCourses() {
+        var id = document.getElementById("DeptID").value;
+        var courses = document.getElementById("CourseID");
+        courses.innerHTML = '';
+        $.ajax({
+            url: "/Instructor/DeptToCourses?DeptId="+id,
+            success: function (res) {
+                for(let item of res)
+                {
+                    courses.innerHTML += "<option value='"+item.id+"'>"+item.name+"</option>";
+                }
+            }
+        });
+    }
+</script>

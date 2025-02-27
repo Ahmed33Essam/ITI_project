@@ -1,0 +1,30 @@
+﻿@model CourseRes
+@{
+    ViewData["Title"] = "ShowRes";
+    SelectList listItems = new SelectList(ViewBag.Courses, "Id", "Name");
+}
+
+<h1>Show Degree</h1>
+
+<form asp-action="ShowResOutput" asp-controller="CourseRes">
+
+    <div asp-validation-summary="All"></div>
+    <div>
+    <label asp-for="TraineeID" style="margin:10px"></label>
+    <input asp-for="TraineeID" class="form-control"/>
+    <span asp-validation-for="TraineeID" class="text-danger" style="margin:10px"></span>
+    <br />
+
+    <label asp-for="CourseID" style="margin:10px"></label>
+        <select class="form-control" asp-items="@listItems" asp-for="CourseID">
+        <option value="0">--Select Course--</option>
+    </select>
+    <span asp-validation-for="CourseID" class="text-danger" style="margin:10px"></span>
+    </div>
+    <input type="submit" value="Show" class="btn btn-success" style="margin:10px" />
+</form>
+<a asp-action="ChooseResType" asp-controller="CourseRes" class="btn btn-primary" style="margin:10px">Change search</a>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,21 @@
+﻿@model int
+@{
+    ViewData["Title"] = "ChooseResType";
+}
+
+<h1>ChooseResType</h1>
+
+<form asp-action="Go" asp-controller="CourseRes" asp-route-op ="@Model">
+    <div class="form-group">
+        <label class="control-label">What are you search about</label>
+        <select class="form-control" name="id">
+            <option id="id" value="0" selected>-- Select --</option>
+            <option id="id" value="1">All Degrees</option>
+            <option id="id" value="2">Course Degrees</option>
+            <option id="id" value="3">Trainee Degrees</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Go" class="btn btn-primary" style="margin:10px"/>
+    </div>
+</form>

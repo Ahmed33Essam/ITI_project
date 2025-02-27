@@ -1,0 +1,23 @@
+﻿@model List<(string, int, string)>
+@{
+    ViewData["Title"] = "ShowCourses";
+}
+
+<h1>ShowCourses</h1>
+
+<table class="table table-hover table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Degree</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td style="color:@item.Item3">@item.Item1</td>
+            <td style="color:@item.Item3">@item.Item2</td>
+        </tr>
+    }
+</table>
+<a asp-action="CoursesRes" asp-controller="CourseRes" class="link-primary">Back to Search</a>
+<br />
+<br />

@@ -1,0 +1,39 @@
+﻿@model Instructor
+@{
+    ViewData["Title"] = "Details";
+}
+
+<head>
+    <style>
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .button-link:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+
+<body style="align-content:center;background-color:powderblue">
+<h1>Details</h1>
+
+    <img src="~/Images/1.png" />
+    <h3 class="form form-control">@Model.Name</h3>
+    <h3 class="form form-control">@Model.Id</h3>
+    <h3 class="form form-control">@Model.Salary</h3>
+    <h3 class="form form-control">@Model.Department.Name</h3>
+    <h3 class="form form-control">@Model.Course.Name</h3>
+    <a href="https://localhost:44324/Instructor/showall" class = "button-link" style="margin:10px">back to list</a>
+    <hr />
+</body>

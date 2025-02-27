@@ -1,0 +1,15 @@
+﻿@model CourseRes
+@{
+    ViewData["Title"] = "ShowResOutput";
+}
+
+<h1>ShowResOutput</h1>
+<br />
+<br />
+
+<label class="form-control" style="color:@ViewBag.color; font-size:large">Student Name : @ViewBag.trainee.Name</label>
+<label class="form-control" style="color:@ViewBag.color; font-size:large">Course Name : @ViewBag.course.Name</label>
+<label class="form-control" style="color:@ViewBag.color; font-size:large">Degree : @Model.Degree</label>
+<a asp-action="ShowRes" asp-controller="CourseRes" class="link-primary" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Back to Search</a>
+<br />
+<br />
